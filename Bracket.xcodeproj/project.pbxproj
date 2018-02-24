@@ -14,6 +14,7 @@
 		EB64DE942041CDDA00B093D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB64DE922041CDDA00B093D4 /* LaunchScreen.storyboard */; };
 		EB64DE9F2041CDDA00B093D4 /* BracketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB64DE9E2041CDDA00B093D4 /* BracketTests.swift */; };
 		EB64DEAA2041CDDB00B093D4 /* BracketUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB64DEA92041CDDB00B093D4 /* BracketUITests.swift */; };
+		EB64DEB82041CF8A00B093D4 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB64DEB72041CF8A00B093D4 /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		EB64DEA52041CDDA00B093D4 /* BracketUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BracketUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB64DEA92041CDDB00B093D4 /* BracketUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BracketUITests.swift; sourceTree = "<group>"; };
 		EB64DEAB2041CDDB00B093D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EB64DEB72041CF8A00B093D4 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				EB64DE892041CDDA00B093D4 /* AppDelegate.swift */,
 				EB64DE8B2041CDDA00B093D4 /* ViewController.swift */,
 				EB64DE8D2041CDDA00B093D4 /* Main.storyboard */,
+				EB64DEB72041CF8A00B093D4 /* PlayerViewController.swift */,
 				EB64DE902041CDDA00B093D4 /* Assets.xcassets */,
 				EB64DE922041CDDA00B093D4 /* LaunchScreen.storyboard */,
 				EB64DE952041CDDA00B093D4 /* Info.plist */,
@@ -261,6 +264,7 @@
 			files = (
 				EB64DE8C2041CDDA00B093D4 /* ViewController.swift in Sources */,
 				EB64DE8A2041CDDA00B093D4 /* AppDelegate.swift in Sources */,
+				EB64DEB82041CF8A00B093D4 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
