@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		022A97422047184D00B94676 /* bracketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022A97412047184D00B94676 /* bracketViewController.swift */; };
 		EB64DE8A2041CDDA00B093D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB64DE892041CDDA00B093D4 /* AppDelegate.swift */; };
 		EB64DE8C2041CDDA00B093D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB64DE8B2041CDDA00B093D4 /* ViewController.swift */; };
 		EB64DE8F2041CDDA00B093D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB64DE8D2041CDDA00B093D4 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		022A97412047184D00B94676 /* bracketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bracketViewController.swift; sourceTree = "<group>"; };
 		EB64DE862041CDDA00B093D4 /* Bracket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bracket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB64DE892041CDDA00B093D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB64DE8B2041CDDA00B093D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				EB64DE892041CDDA00B093D4 /* AppDelegate.swift */,
 				EB64DE8B2041CDDA00B093D4 /* ViewController.swift */,
 				EB64DE8D2041CDDA00B093D4 /* Main.storyboard */,
+				022A97412047184D00B94676 /* bracketViewController.swift */,
 				EB64DEB72041CF8A00B093D4 /* PlayerViewController.swift */,
 				EB64DE902041CDDA00B093D4 /* Assets.xcassets */,
 				EB64DE922041CDDA00B093D4 /* LaunchScreen.storyboard */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB64DE8C2041CDDA00B093D4 /* ViewController.swift in Sources */,
+				022A97422047184D00B94676 /* bracketViewController.swift in Sources */,
 				EB64DE8A2041CDDA00B093D4 /* AppDelegate.swift in Sources */,
 				EB64DEB82041CF8A00B093D4 /* PlayerViewController.swift in Sources */,
 			);
