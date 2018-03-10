@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController{
+var settings = MatchSettings(teams: false, seeding: false, elo: false, numPlayers: 4, bracketType: 1, timePerMatch: 5.0, bi: false)
 
+class ViewController: UIViewController{
+    
     let bracketTypes = ["SINGLE ELIMINATION", "ROUND ROBIN", "DOUBLE ELIMINATION"]
     var selectedBracketType: String?
     
@@ -23,9 +25,23 @@ class ViewController: UIViewController{
     @IBOutlet weak var blurEffect: UIVisualEffectView!
     @IBOutlet weak var bracketTypeTextField: UITextField!
     @IBOutlet weak var startButton: UIButton!
-
+    
     
     @IBAction func nextClicked(_ sender: UIButton) {
+        settings.teams = teamButton.isOn
+        settings.elo = false
+        settings.bi = false
+        if bracketTypeTextField.description.contains("SINGLE"){
+            settings.bracketType = 1
+        }
+        else if bracketTypeTextField.description.contains("DOUBLE"){
+            settings.bracketType = 3
+        }
+        else{
+            settings.bracketType = 2
+        }
+        settings.numPlayers = Int(playerSliderValue.value)
+        settings.timePerMatch = 5.0
         performSegue(withIdentifier: "firstSegue", sender: self)
     }
     @IBAction func playerSlidingDone(_ sender: UISlider) {
@@ -39,8 +55,8 @@ class ViewController: UIViewController{
         if playerSliderValue.value < 4{
             nextButton.isEnabled = false
             UIView.animate(withDuration: 0.6, animations: {
-                    self.nextButton.alpha = 0.4
-                })
+                self.nextButton.alpha = 0.4
+            })
         }
         else{
             nextButton.isEnabled = true
@@ -98,13 +114,13 @@ class ViewController: UIViewController{
         createBracketPicker()
         nextButton.isEnabled = false
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {

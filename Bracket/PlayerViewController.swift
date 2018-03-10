@@ -13,6 +13,7 @@ class PlayerViewController: UIViewController {
     var players = [String]()
     @IBOutlet weak var verticalSlider: UISlider!{
         didSet{
+            verticalSlider.maximumValue = Float(settings.numPlayers!)
             verticalSlider.transform = CGAffineTransform(rotationAngle: CGFloat.pi/2)
         }
     }
@@ -56,7 +57,6 @@ class PlayerViewController: UIViewController {
     }
     @IBAction func addPlayer(_ sender: UIButton) {
         players.append(playerText.text!)
-        print(players)
         playerText.text = ""
         firstPlayersDisplay.text?.removeAll()
         secondPlayersDisplay.text?.removeAll()

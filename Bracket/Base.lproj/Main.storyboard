@@ -274,7 +274,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="13" minValue="0.0" maxValue="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kbx-Fe-J2a">
-                                <rect key="frame" x="-140" y="287" width="424" height="30"/>
+                                <rect key="frame" x="-138" y="301" width="424" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="minimumTrackTintColor" red="0.91630041599273682" green="0.43641608953475952" blue="0.42475014925003052" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" red="0.9614366888999939" green="0.67663747072219849" blue="0.49477910995483398" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
