@@ -8,13 +8,13 @@
 
 import UIKit
 
-var settings = MatchSettings(teams: false, seeding: false, elo: false, numPlayers: 4, bracketType: 1, timePerMatch: 5.0, bi: false)
+var settings = MatchSettings(teams: true, seeding: true, elo: false, numPlayers: 4, bracketType: 1, timePerMatch: 5.0, bi: false)
+var beginButtonClicked : Bool = false
 
 class ViewController: UIViewController{
     
     let bracketTypes = ["SINGLE ELIMINATION", "ROUND ROBIN", "DOUBLE ELIMINATION"]
     var selectedBracketType: String?
-    
     @IBOutlet weak var playerValueDisplay: UILabel!
     @IBOutlet weak var playerSliderValue: UISlider!
     @IBOutlet weak var teamsOnDisplay: UILabel!
@@ -31,10 +31,10 @@ class ViewController: UIViewController{
         settings.teams = teamButton.isOn
         settings.elo = false
         settings.bi = false
-        if bracketTypeTextField.description.contains("SINGLE"){
+        if (selectedBracketType?.contains("SINGLE"))!{
             settings.bracketType = 1
         }
-        else if bracketTypeTextField.description.contains("DOUBLE"){
+        else if (selectedBracketType?.description.contains("DOUBLE"))!{
             settings.bracketType = 3
         }
         else{
@@ -52,7 +52,7 @@ class ViewController: UIViewController{
             playerValueDisplay.text = "\(Int(playerSliderValue.value)) PLAYER"
         }
         
-        if playerSliderValue.value < 4{
+        if playerSliderValue.value < 4 || (bracketTypeTextField.text?.contains("TYPE"))!{
             nextButton.isEnabled = false
             UIView.animate(withDuration: 0.6, animations: {
                 self.nextButton.alpha = 0.4
@@ -67,6 +67,7 @@ class ViewController: UIViewController{
         
     }
     @IBAction func teamButtonClicked(_ sender: UISwitch) {
+        settings.teams = teamButton.isOn
         if teamButton.isOn{
             UIView.animate(withDuration: 0.6, animations: {
                 self.teamsOnDisplay.alpha = 1
@@ -79,6 +80,7 @@ class ViewController: UIViewController{
         }
     }
     @IBAction func seedingButtonClicked(_ sender: UISwitch) {
+        settings.seeding = seedingButton.isOn
         if seedingButton.isOn{
             UIView.animate(withDuration: 0.6, animations: {
                 self.seedingOnDisplay.alpha = 1
@@ -101,18 +103,47 @@ class ViewController: UIViewController{
         bracketPicker.backgroundColor = UIColor(displayP3Red: 255, green: 126, blue: 121, alpha: 1)
     }
     @IBAction func startButtonClicked(_ sender: UIButton) {
-        UIView.animate(withDuration: 1, animations: {
-            self.blurEffect.alpha = 0.7
-            self.startButton.alpha = 0
-        }, completion: { (complete: Bool) in
-            self.blurEffect.alpha = 0
-        })
+        if !beginButtonClicked{
+            beginButtonClicked = true
+            UIView.animate(withDuration: 1, animations: {
+                self.blurEffect.alpha = 0
+                self.startButton.alpha = 0
+            })
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createBracketPicker()
         nextButton.isEnabled = false
+        if beginButtonClicked{
+            nextButton.isEnabled = true
+            nextButton.alpha = 1
+            playerSliderValue.value = Float(settings.numPlayers!)
+            playerValueDisplay.text = "\(Int(playerSliderValue.value)) PLAYERS"
+            if settings.bracketType == 1{
+                bracketTypeTextField.text = "SINGLE ELIMINATION"
+                selectedBracketType = "SINGLE ELIMINATION"
+            }
+            if settings.bracketType == 2{
+                bracketTypeTextField.text = "ROUND ROBIN"
+               selectedBracketType = "ROUND ROBIN"
+            }
+            if settings.bracketType == 3{
+                bracketTypeTextField.text = "DOUBLE ELIMINATION"
+                selectedBracketType = "DOUBLE ELIMINATION"
+            }
+            seedingButton.isOn = settings.seeding!
+            if !seedingButton.isOn{
+                seedingOnDisplay.alpha = 0.4
+            }
+            teamButton.isOn = settings.teams!
+            if !teamButton.isOn{
+                teamsOnDisplay.alpha = 0.4
+            }
+            blurEffect.alpha = 0
+            startButton.alpha = 0
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -137,6 +168,18 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedBracketType = bracketTypes[row]
         bracketTypeTextField.text = selectedBracketType
+        if playerSliderValue.value < 4 || (bracketTypeTextField.text?.contains("TYPE"))!{
+            nextButton.isEnabled = false
+            UIView.animate(withDuration: 0.6, animations: {
+                self.nextButton.alpha = 0.4
+            })
+        }
+        else{
+            nextButton.isEnabled = true
+            UIView.animate(withDuration: 0.6, animations: {
+                self.nextButton.alpha = 1
+            })
+        }
     }
     
 }
