@@ -91,8 +91,8 @@
                                     <action selector="seedingButtonClicked:" destination="BYZ-38-t0r" eventType="valueChanged" id="5Y4-oF-1ak"/>
                                 </connections>
                             </switch>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="BRACKET TYPE" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-DD-Fav">
-                                <rect key="frame" x="20" y="251" width="374" height="76"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="SELECT BRACKET" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lit-DD-Fav">
+                                <rect key="frame" x="-12" y="251" width="438" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99951261281967163" green="0.4929007887840271" blue="0.47539675235748291" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -185,7 +185,7 @@
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="27.717391304347828"/>
         </scene>
-        <!--Player View Controller-->
+        <!--Title-->
         <scene sceneID="Lre-1j-0Mf">
             <objects>
                 <viewController id="DRI-Rh-jhL" customClass="PlayerViewController" customModule="Bracket" customModuleProvider="target" sceneMemberID="viewController">
@@ -322,6 +322,7 @@
                             <outletCollection property="gestureRecognizers" destination="cHu-fL-6D1" appends="YES" id="hz7-s2-x7S"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="zZu-ux-d9G"/>
                     <connections>
                         <outlet property="firstPlayersDisplay" destination="n7G-VN-oRc" id="FHA-1j-rYC"/>
                         <outlet property="fourthPlayersDisplay" destination="38x-CH-Dws" id="i5h-mW-HgL"/>
