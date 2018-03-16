@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="-7.2463768115942031" y="27.717391304347828"/>
         </scene>
-        <!--Title-->
+        <!--Player View Controller-->
         <scene sceneID="Lre-1j-0Mf">
             <objects>
-                <viewController id="DRI-Rh-jhL" customClass="PlayerViewController" customModule="Bracket" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Player View Controller" id="DRI-Rh-jhL" customClass="PlayerViewController" customModule="Bracket" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oMR-CC-tl5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -240,6 +240,9 @@
                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="donePressed:" destination="DRI-Rh-jhL" eventType="primaryActionTriggered" id="Xo6-hM-Qmc"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7G-VN-oRc">
                                 <rect key="frame" x="95" y="182" width="288" height="74"/>
@@ -287,6 +290,17 @@
                                     <action selector="playerScroll:" destination="DRI-Rh-jhL" eventType="valueChanged" id="sWp-Ul-yTC"/>
                                 </connections>
                             </slider>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tt3-di-F2R">
+                                <rect key="frame" x="95" y="199" width="240" height="251"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexColor" red="0.94124966859817505" green="0.48770123720169067" blue="0.46850156784057617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexBackgroundColor" red="0.98947185277938843" green="0.92470794916152954" blue="0.89370101690292358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qel-Je-uGc" id="Wca-d1-Ufg"/>
+                                    <outlet property="delegate" destination="DRI-Rh-jhL" id="W4c-Iw-a0Y"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.98947185277938843" green="0.92470794916152954" blue="0.89370101690292358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -328,11 +342,13 @@
                         <outlet property="fourthPlayersDisplay" destination="38x-CH-Dws" id="i5h-mW-HgL"/>
                         <outlet property="playerText" destination="0bC-YB-OSh" id="RG7-3U-z32"/>
                         <outlet property="secondPlayersDisplay" destination="6m5-wb-XCs" id="gYb-FC-tUZ"/>
+                        <outlet property="tableViewOutlet" destination="Tt3-di-F2R" id="K3G-vL-aeZ"/>
                         <outlet property="thirdPlayersDisplay" destination="XHu-aL-vmh" id="9hb-7g-zbL"/>
                         <outlet property="verticalSlider" destination="Kbx-Fe-J2a" id="tBy-FP-OVX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UZx-QB-gl9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="qel-Je-uGc" customClass="TableViewData" customModule="Bracket" customModuleProvider="target"/>
                 <tapGestureRecognizer id="cHu-fL-6D1">
                     <connections>
                         <action selector="clickedOffPlayerField:" destination="DRI-Rh-jhL" id="rRa-Ja-iY5"/>

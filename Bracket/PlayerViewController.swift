@@ -10,7 +10,10 @@ import UIKit
 
 var playersList = [String]()
 
-class PlayerViewController: UIViewController {
+class PlayerViewController: UIViewController, UITableViewDelegate {
+    
+    @IBOutlet weak var tableViewOutlet: UITableView!
+    
     
     @IBOutlet weak var verticalSlider: UISlider!{
         didSet{
@@ -22,7 +25,7 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var playerText: UITextField!
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
-        performSegue(withIdentifier: "backSegue", sender: self)
+        performSegue(withIdentifier: "ba ckSegue", sender: self)
     }
     
     @IBOutlet weak var firstPlayersDisplay: UILabel!
@@ -30,6 +33,38 @@ class PlayerViewController: UIViewController {
     @IBOutlet weak var thirdPlayersDisplay: UILabel!
     @IBOutlet weak var fourthPlayersDisplay: UILabel!
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath){
+        
+    }
+    @IBAction func donePressed(_ sender: UITextField) {
+        var alreadyPlayer = false
+        for player in playersList{
+            if player == playerText.text{
+                alreadyPlayer = true
+            }
+        }
+        if playerText.text != "" && playersList.count<settings.numPlayers! && !alreadyPlayer && playerText.text?.first != " "{
+            playersList.append(playerText.text!)
+            playerText.text = ""
+            firstPlayersDisplay.text?.removeAll()
+            secondPlayersDisplay.text?.removeAll()
+            thirdPlayersDisplay.text?.removeAll()
+            fourthPlayersDisplay.text?.removeAll()
+
+            if playersList.count>Int(verticalSlider.value){
+                firstPlayersDisplay.text! = playersList[Int(verticalSlider.value)]
+            }
+            if playersList.count>Int(verticalSlider.value)+1{
+                secondPlayersDisplay.text! = playersList[Int(verticalSlider.value)+1]
+            }
+            if playersList.count>Int(verticalSlider.value)+2{
+                thirdPlayersDisplay.text! = playersList[Int(verticalSlider.value)+2]
+            }
+            if playersList.count>Int(verticalSlider.value)+3{
+                fourthPlayersDisplay.text! = playersList[Int(verticalSlider.value)+3]
+            }
+        }
+    }
     @IBAction func playerScroll(_ sender: UISlider) {
         if playersList.count>Int(verticalSlider.value){
             firstPlayersDisplay.text! = playersList[Int(verticalSlider.value)]

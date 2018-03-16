@@ -52,7 +52,7 @@ class ViewController: UIViewController{
             playerValueDisplay.text = "\(Int(playerSliderValue.value)) PLAYER"
         }
         
-        if playerSliderValue.value < 4 || (bracketTypeTextField.text?.contains("TYPE"))!{
+        if playerSliderValue.value < 4 || (bracketTypeTextField.text?.contains("SELECT"))!{
             nextButton.isEnabled = false
             UIView.animate(withDuration: 0.6, animations: {
                 self.nextButton.alpha = 0.4
