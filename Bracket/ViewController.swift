@@ -8,29 +8,31 @@
 
 import UIKit
 
-var settings = MatchSettings(teams: true, seeding: true, elo: false, numPlayers: 4, bracketType: 1, timePerMatch: 5.0, bi: false)
-var beginButtonClicked : Bool = false
+//Global variables
+var settings = MatchSettings(teams: true, seeding: true, elo: false, numPlayers: 4, bracketType: 1, timePerMatch: 5.0, bi: false) /* Settings variable used to store information about the game preferences */
+var beginButtonClicked : Bool = false /* Determines if the view has been opened before (for viewdidload) */
 
 class ViewController: UIViewController{
+
+//Instance variables
+    let bracketTypes = ["SINGLE ELIMINATION", "ROUND ROBIN", "DOUBLE ELIMINATION"] /* Array of types of brackets */
+    var selectedBracketType: String? /* Which bracket the user has selected */
+    @IBOutlet weak var playerValueDisplay: UILabel! /* The label showing number of players chosen above the slider */
+    @IBOutlet weak var playerSliderValue: UISlider! /* Value the slider is currently on (how many players there are) */
+    @IBOutlet weak var teamsOnDisplay: UILabel! /* Label that says 'teams' and changes alpha from the team button */
+    @IBOutlet weak var seedingOnDisplay: UILabel!/* Label that says 'seeding' and changes alpha from the seeding button */
+    @IBOutlet weak var teamButton: UISwitch! /* Button that changes whether teams are on or off */
+    @IBOutlet weak var seedingButton: UISwitch! /* Button that changes whether seeding is on or off */
+    @IBOutlet weak var nextButton: UIButton! /* Button that goes to the next view */
+    @IBOutlet weak var blurEffect: UIVisualEffectView! /* Blur effect that disappears when you click begin */
+    @IBOutlet weak var bracketTypeTextField: UITextField! /* The thing you use to select which bracket you want */
+    @IBOutlet weak var startButton: UIButton! /* Button you click to begin choosing settings */
     
-    let bracketTypes = ["SINGLE ELIMINATION", "ROUND ROBIN", "DOUBLE ELIMINATION"]
-    var selectedBracketType: String?
-    @IBOutlet weak var playerValueDisplay: UILabel!
-    @IBOutlet weak var playerSliderValue: UISlider!
-    @IBOutlet weak var teamsOnDisplay: UILabel!
-    @IBOutlet weak var seedingOnDisplay: UILabel!
-    @IBOutlet weak var teamButton: UISwitch!
-    @IBOutlet weak var seedingButton: UISwitch!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var blurEffect: UIVisualEffectView!
-    @IBOutlet weak var bracketTypeTextField: UITextField!
-    @IBOutlet weak var startButton: UIButton!
-    
-    
+    //Next button clicked to go to the next view, determines settings values based on what player has chosen
     @IBAction func nextClicked(_ sender: UIButton) {
         settings.teams = teamButton.isOn
-        settings.elo = false
-        settings.bi = false
+        settings.elo = false /* NOT YET ADDED */
+        settings.bi = false /* NOT YET ADDED */
         if (selectedBracketType?.contains("SINGLE"))!{
             settings.bracketType = 1
         }
@@ -41,17 +43,21 @@ class ViewController: UIViewController{
             settings.bracketType = 2
         }
         settings.numPlayers = Int(playerSliderValue.value)
-        settings.timePerMatch = 5.0
+        settings.timePerMatch = 5.0 /* NOT YET ADDED */
         performSegue(withIdentifier: "firstSegue", sender: self)
     }
+    
+    //When you click on the slider and the value either changes or stays the same. Will determine if game is playable based
+    //on how many players the user chose. Will also set the label that shows how many players the user chose
     @IBAction func playerSlidingDone(_ sender: UISlider) {
+        //Determines whether or not to say players/player for grammatical purposes
         if Int(playerSliderValue.value) > 1{
             playerValueDisplay.text = "\(Int(playerSliderValue.value)) PLAYERS"
         }
         else{
             playerValueDisplay.text = "\(Int(playerSliderValue.value)) PLAYER"
         }
-        
+        //Determines if the user has chosen a bracket type yet. Enables or disables next button respectively
         if playerSliderValue.value < 4 || (bracketTypeTextField.text?.contains("SELECT"))!{
             nextButton.isEnabled = false
             UIView.animate(withDuration: 0.6, animations: {
@@ -66,6 +72,7 @@ class ViewController: UIViewController{
         }
         
     }
+    //User turned on teams or turned it off
     @IBAction func teamButtonClicked(_ sender: UISwitch) {
         settings.teams = teamButton.isOn
         if teamButton.isOn{
@@ -79,6 +86,7 @@ class ViewController: UIViewController{
             })
         }
     }
+    //User enabled or disabled seeding
     @IBAction func seedingButtonClicked(_ sender: UISwitch) {
         settings.seeding = seedingButton.isOn
         if seedingButton.isOn{
@@ -92,16 +100,19 @@ class ViewController: UIViewController{
             })
         }
     }
+    //User hit somewhere on the screen after choosing their bracket type
     @IBAction func clickedOffBracketType(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
+    //Creates the pickerview scrolly thing
     func createBracketPicker() {
         let bracketPicker = UIPickerView()
         bracketPicker.delegate = self
         bracketTypeTextField.inputView = bracketPicker
         bracketPicker.backgroundColor = UIColor(displayP3Red: 255, green: 126, blue: 121, alpha: 1)
     }
+    //
     @IBAction func startButtonClicked(_ sender: UIButton) {
         if !beginButtonClicked{
             beginButtonClicked = true

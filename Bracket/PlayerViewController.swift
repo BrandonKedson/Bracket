@@ -14,6 +14,7 @@ class PlayerViewController: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
+    @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var verticalSlider: UISlider!{
         didSet{
@@ -25,7 +26,7 @@ class PlayerViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var playerText: UITextField!
     
     @IBAction func backButtonClicked(_ sender: UIButton) {
-        performSegue(withIdentifier: "ba ckSegue", sender: self)
+        performSegue(withIdentifier: "backSegue", sender: self)
     }
     
     @IBOutlet weak var firstPlayersDisplay: UILabel!
@@ -95,6 +96,7 @@ class PlayerViewController: UIViewController, UITableViewDelegate {
         view.endEditing(true)
     }
     @IBAction func addPlayer(_ sender: UIButton) {
+        textView.text = ""
         var alreadyPlayer = false
         for player in playersList{
             if player == playerText.text{
@@ -102,13 +104,15 @@ class PlayerViewController: UIViewController, UITableViewDelegate {
             }
         }
         if playerText.text != "" && playersList.count<settings.numPlayers! && !alreadyPlayer && playerText.text?.first != " "{
+            for name in playersList{
+//                textView.text += "\(name)"
+            }
             playersList.append(playerText.text!)
             playerText.text = ""
             firstPlayersDisplay.text?.removeAll()
             secondPlayersDisplay.text?.removeAll()
             thirdPlayersDisplay.text?.removeAll()
             fourthPlayersDisplay.text?.removeAll()
-            
             if playersList.count>Int(verticalSlider.value){
                 firstPlayersDisplay.text! = playersList[Int(verticalSlider.value)]
             }

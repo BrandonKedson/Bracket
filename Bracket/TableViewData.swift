@@ -19,9 +19,7 @@ class TableViewData: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel!.textAlignment = .center
-        cell.textLabel!.text = "hi"
-        print("hi")
-        //playersList[indexPath.row+1]
+        cell.textLabel!.text = "Enter a player"
         cell.textLabel!.font = UIFont(name: "Avenir Next", size: 50)
         cell.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
         cell.backgroundView?.alpha = 0
